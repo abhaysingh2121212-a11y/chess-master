@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --background: 0.18 0.012 265;
+    --foreground: 0.95 0.01 265;
+    --card: 0.22 0.014 265;
+    --card-foreground: 0.95 0.01 265;
+    --popover: 0.25 0.016 265;
+    --popover-foreground: 0.95 0.01 265;
+    --primary: 0.72 0.18 55;
+    --primary-foreground: 0.12 0.01 265;
+    --secondary: 0.28 0.018 265;
+    --secondary-foreground: 0.88 0.01 265;
+    --muted: 0.26 0.015 265;
+    --muted-foreground: 0.6 0.01 265;
+    --accent: 0.65 0.16 55;
+    --accent-foreground: 0.12 0.01 265;
+    --destructive: 0.62 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.32 0.02 265;
+    --input: 0.3 0.018 265;
+    --ring: 0.72 0.18 55;
+    --chart-1: 0.72 0.18 55;
+    --chart-2: 0.65 0.16 55;
+    --chart-3: 0.55 0.14 55;
+    --chart-4: 0.45 0.12 55;
+    --chart-5: 0.35 0.1 55;
+    --sidebar: 0.22 0.014 265;
+    --sidebar-foreground: 0.95 0.01 265;
+    --sidebar-primary: 0.72 0.18 55;
+    --sidebar-primary-foreground: 0.12 0.01 265;
+    --sidebar-accent: 0.28 0.018 265;
+    --sidebar-accent-foreground: 0.88 0.01 265;
+    --sidebar-border: 0.32 0.02 265;
+    --sidebar-ring: 0.72 0.18 55;
+  }
+
+  .dark {
+    --background: 0.14 0.01 265;
+    --foreground: 0.95 0.01 265;
+    --card: 0.18 0.012 265;
+    --card-foreground: 0.95 0.01 265;
+    --popover: 0.22 0.014 265;
+    --popover-foreground: 0.95 0.01 265;
+    --primary: 0.72 0.18 55;
+    --primary-foreground: 0.12 0.01 265;
+    --secondary: 0.24 0.016 265;
+    --secondary-foreground: 0.88 0.01 265;
+    --muted: 0.22 0.014 265;
+    --muted-foreground: 0.55 0.01 265;
+    --accent: 0.65 0.16 55;
+    --accent-foreground: 0.12 0.01 265;
+    --destructive: 0.62 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.28 0.018 265;
+    --input: 0.26 0.016 265;
+    --ring: 0.72 0.18 55;
+    --chart-1: 0.72 0.18 55;
+    --chart-2: 0.65 0.16 55;
+    --chart-3: 0.55 0.14 55;
+    --chart-4: 0.45 0.12 55;
+    --chart-5: 0.35 0.1 55;
+    --sidebar: 0.18 0.012 265;
+    --sidebar-foreground: 0.95 0.01 265;
+    --sidebar-primary: 0.72 0.18 55;
+    --sidebar-primary-foreground: 0.12 0.01 265;
+    --sidebar-accent: 0.24 0.016 265;
+    --sidebar-accent-foreground: 0.88 0.01 265;
+    --sidebar-border: 0.28 0.018 265;
+    --sidebar-ring: 0.72 0.18 55;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Satoshi", "General Sans", system-ui, sans-serif;
+  }
+}
+
+/* SVG chess pieces hover effect */
+.piece-hover:hover svg {
+  transform: scale(1.1);
+  transition: transform 0.1s ease;
+}
+.piece-hover svg {
+  transition: transform 0.1s ease;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Mode selector overlay */
+.mode-overlay {
+  transition: opacity 0.5s ease;
+}
+.mode-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Board animation */
+.board-container {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.board-container.selecting {
+  transform: scale(0.82);
+  opacity: 0.7;
+}
+.board-container.playing {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* AI thinking pulse */
+@keyframes thinking-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+.thinking-pulse {
+  animation: thinking-pulse 1.2s ease-in-out infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--muted-foreground));
+  border-radius: 99px;
+}
